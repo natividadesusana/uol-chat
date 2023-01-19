@@ -1,5 +1,5 @@
 
-message = [];
+let message = [];
 
 let userName = {name: prompt(`🧡 Bem Vindo ao Chat UOL! 
 Digite seu nome:`)}
@@ -23,11 +23,26 @@ function errorUsername() {
     window.location.reload()
 }
 
+function keepConnection() {
+    promisePOST = axios.post('https://mock-api.driven.com.br/api/v6/uol/status', userName);
+    promisePOST.then(onlineUser);
+    promisePOST.catch(offlineUser);
+}
+keepConnection();
+
+function onlineUser(connected) {
+    alert('Usuário Conectado - Status Online');
+}
+
+function offlineUser(disconnected) {
+    alert('Usuário Desconectado - Status Offline');
+}
+
 function displayMessage(response) {
+    message = response.data;
+    console.log(response.data)
 
-    const message = response.data;
-
-    const messageContainer = document.querySelector('.message-container');
+    let messageContainer = document.querySelector('.message-container');
 
     messageContainer.innerHTML = '';
 
@@ -52,7 +67,7 @@ function displayMessage(response) {
                     <p>
                         <span class='time'>(${message[i].time})</span>
                         <strong class='name'>${message[i].from}</strong>
-                        para <span class='text'>${message[i].to}</span>
+                        <span class='text'>para</span>
                         <strong class='name'>${message[i].to}</strong>
                         <span class='text'>${message[i].text}</span> 
                     </p>
@@ -65,7 +80,7 @@ function displayMessage(response) {
                     <p>
                         <span class='time'>(${message[i].time})</span>
                         <strong class='name'>${message[i].from}</strong>
-                        reservadamente para <span class='text'>${message[i].to}</span>
+                        <span class='text'>reservadamente para</span>
                         <strong class='name'>${message[i].to}</strong>
                         <span class='text'>${message[i].text}</span> 
                     </p>
@@ -74,12 +89,13 @@ function displayMessage(response) {
         }
     }
 
-    const lastMessage = document.querySelector('messageContainer');
-    lastMessage.scrollIntoView();
+    let elementAppears = document.querySelector('messageContainer');
+    elementAppears.scrollIntoView();
+
 }
-setInterval(displayMessage, 3000)
+setInterval(displayMessage, 3000);
 
-
+displayMessage()
 
 function sendMessage() {
 
@@ -90,18 +106,17 @@ function sendMessage() {
     };
 
     const newMessage = {
-       from: userName,
+       from: userName.name,
        to: 'Todos',
-       text: messageText,
-       type: messageType
+       text: messageSent.value,
+       type: 'message'
     };
 
     const promisePOST = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', newMessage);
-    promisePOST.then(messagesAgain);
+    promisePOST.then(displayMessage);
     promisePOST.catch(window.location.reload());
     console.log(promisePOST)
 };
-
 
 document.addEventListener("keypress", function (e) {
     if (e.key === 'Enter') {
@@ -115,4 +130,3 @@ document.addEventListener("keypress", function (e) {
 });
 
 
-displayMessage()
