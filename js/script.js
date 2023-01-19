@@ -33,24 +33,52 @@ function displayMessage(response) {
 
     for (let i = 0; i < message.length; i++) {
 
-        messageContainer.innerHTML += `
-            <div class='message ${message[i].type}'>
-                <p>
-                    <span class='time'>(${message[i].time})</span>
-                    <strong class='name'>${message[i].from}</strong>
-                    para <span class='text'>${message[i].to}</span>
-                    <span class='text'>${message[i].text}</span> 
-                </p>
-            </div>
-        `
+        switch(message[i].type) {
 
-        const lastMessage = document.querySelector('messageContainer');
+            case 'status':
+                messageContainer.innerHTML += `
+                <div class='statusMessage'>
+                    <p>
+                        <span class='time'>(${message[i].time})</span>
+                        <strong class='name'>${message[i].from}</strong>
+                        <span class='text'>${message[i].text}</span> 
+                    </p>
+                </div>`;
+                    break;
 
-        lastMessage.scrollIntoView();
+            case 'message':
+                messageContainer.innerHTML += `
+                <div class='regularMessage'>
+                    <p>
+                        <span class='time'>(${message[i].time})</span>
+                        <strong class='name'>${message[i].from}</strong>
+                        para <span class='text'>${message[i].to}</span>
+                        <strong class='name'>${message[i].to}</strong>
+                        <span class='text'>${message[i].text}</span> 
+                    </p>
+                </div>`;
+                break;
+
+            case 'private_message':
+                messageContainer.innerHTML += `
+                <div class='privateMessage'>
+                    <p>
+                        <span class='time'>(${message[i].time})</span>
+                        <strong class='name'>${message[i].from}</strong>
+                        reservadamente para <span class='text'>${message[i].to}</span>
+                        <strong class='name'>${message[i].to}</strong>
+                        <span class='text'>${message[i].text}</span> 
+                    </p>
+                </div>`;
+                break;
+        }
     }
 
-    setInterval(displayMessage, 3000)
+    const lastMessage = document.querySelector('messageContainer');
+    lastMessage.scrollIntoView();
 }
+setInterval(displayMessage, 3000)
+
 
 
 function sendMessage() {
