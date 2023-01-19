@@ -1,6 +1,28 @@
 
 message = [];
 
+let userName = {name: prompt(`🧡 Bem Vindo ao Chat UOL! 
+Digite seu nome:`)}
+
+function userNameLogin() {
+    const promisePOST = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants', userName);
+    promisePOST.then(searchMessage);
+    promisePOST.catch(errorUsername);
+}
+searchMessage()
+
+function searchMessage() {
+    const promiseGET = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages');
+    promiseGET.then(displayMessage);
+    promiseGET.catch(errorUsername);
+}
+
+function errorUsername() {
+    alert(`🥴 OPS...
+    Digite outro nome, pois este já está em uso!`);
+    window.location.reload()
+}
+
 function displayMessage(response) {
 
     const message = response.data;
@@ -23,6 +45,7 @@ function displayMessage(response) {
         `
 
         const lastMessage = document.querySelector('messageContainer');
+
         lastMessage.scrollIntoView();
     }
 
@@ -45,9 +68,10 @@ function sendMessage() {
        type: messageType
     };
 
-    const promise = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', newMessage);
-    promise.then(messagesAgain);
-    promise.catch(window.location.reload());
+    const promisePOST = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', newMessage);
+    promisePOST.then(messagesAgain);
+    promisePOST.catch(window.location.reload());
+    console.log(promisePOST)
 };
 
 
