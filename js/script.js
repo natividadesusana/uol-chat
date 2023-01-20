@@ -6,15 +6,8 @@ Digite seu nome:`)}
 
 function userNameLogin() {
     const promisePOST = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants', userName);
-    promisePOST.then(searchMessage);
+    promisePOST.then(onlineUser);
     promisePOST.catch(errorUsername);
-}
-searchMessage()
-
-function searchMessage() {
-    const promiseGET = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages');
-    promiseGET.then(displayMessage);
-    promiseGET.catch(errorUsername);
 }
 
 function errorUsername() {
@@ -23,25 +16,52 @@ function errorUsername() {
     window.location.reload()
 }
 
-function keepConnection() {
-    promisePOST = axios.post('https://mock-api.driven.com.br/api/v6/uol/status', userName);
-    promisePOST.then(onlineUser);
-    promisePOST.catch(offlineUser);
-}
-keepConnection();
-
-function onlineUser(connected) {
-    alert('Usuário Conectado - Status Online');
+function sendStatus() {
+    const promisePOST = axios.post('https://mock-api.driven.com.br/api/v6/uol/status', userName);
+    promisePOST.catch(() => window.location.reload())
+ 
 }
 
-function offlineUser(disconnected) {
-    alert('Usuário Desconectado - Status Offline');
+function onlineUser() {
+   sendStatus();
+   setInterval(sendStatus, 5000);
+
+   searchMessage();
+   setInterval(searchMessage, 3000);
+
+   loadParticipants();
+   setInterval(loadParticipants, 1000); 
 }
+
+function searchMessage() {
+    const promiseGET = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages');
+    promiseGET.then(displayMessage);
+    promiseGET.catch(() => window.location.reload());
+}
+searchMessage();
+
+// Busca de participantes na sala
+function loadParticipants() {
+    const promiseGET = axios.get('https://mock-api.driven.com.br/api/v6/uol/participants');
+    promiseGET.then(participantsFound);
+    promiseGET.catch(participantsNotFound);
+}
+
+function participantsFound(response) {
+    alert('Participantes Encontrados!');
+    participants = response.data;
+}
+
+function participantsNotFound(error) {
+    alert('Erro ao buscar participantes! Atualizando página...')
+    console.log(error);
+    window.location.reload();
+}
+//
 
 function displayMessage(response) {
-    message = response.data;
-    console.log(response.data)
-
+    const message = response.data;
+    console.log(message)
     let messageContainer = document.querySelector('.message-container');
 
     messageContainer.innerHTML = '';
@@ -52,7 +72,7 @@ function displayMessage(response) {
 
             case 'status':
                 messageContainer.innerHTML += `
-                <div class='statusMessage'>
+                <div class='statusMessage scrollMessage'>
                     <p>
                         <span class='time'>(${message[i].time})</span>
                         <strong class='name'>${message[i].from}</strong>
@@ -63,7 +83,7 @@ function displayMessage(response) {
 
             case 'message':
                 messageContainer.innerHTML += `
-                <div class='regularMessage'>
+                <div class='regularMessage scrollMessage'>
                     <p>
                         <span class='time'>(${message[i].time})</span>
                         <strong class='name'>${message[i].from}</strong>
@@ -76,7 +96,7 @@ function displayMessage(response) {
 
             case 'private_message':
                 messageContainer.innerHTML += `
-                <div class='privateMessage'>
+                <div class='privateMessage scrollMessage'>
                     <p>
                         <span class='time'>(${message[i].time})</span>
                         <strong class='name'>${message[i].from}</strong>
@@ -89,16 +109,13 @@ function displayMessage(response) {
         }
     }
 
-    let elementAppears = document.querySelector('messageContainer');
-    elementAppears.scrollIntoView();
+    let elementAppears = messageContainer.querySelectorAll('.scrollMessage').lastElementChild();
+    elementAppears[elementAppears.length-1].scrollIntoView();
 
 }
-setInterval(displayMessage, 3000);
-
-displayMessage()
+// displayMessage(searchMessage);
 
 function sendMessage() {
-
     const messageSent = document.querySelector('.text-input').value;
     document.querySelector('.text-input').value = '';
     if (messageSent === '') {
@@ -113,9 +130,8 @@ function sendMessage() {
     };
 
     const promisePOST = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', newMessage);
-    promisePOST.then(displayMessage);
-    promisePOST.catch(window.location.reload());
-    console.log(promisePOST)
+    promisePOST.then(searchMessage);
+    promisePOST.catch(() => window.location.reload());
 };
 
 document.addEventListener("keypress", function (e) {
