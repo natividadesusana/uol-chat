@@ -5,15 +5,25 @@ let userName = {name: prompt(`🧡 Bem Vindo ao Chat UOL!
 Digite seu nome:`)}
 
 function userNameLogin() {
+
     const promisePOST = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants', userName);
     promisePOST.then(onlineUser);
     promisePOST.catch(errorUsername);
-}
+   
 
-function errorUsername() {
-    alert(`🥴 OPS...
-    Digite outro nome, pois este já está em uso!`);
+function errorUsername(error) {
+    console.log(error.response);
+    if(error.response.status === 400) {
+        alert(`🥴 OPS...
+Digite outro nome, pois este já está em uso!`);
     window.location.reload()
+    }
+    if(error.response.status === 404) {
+        alert(`🥴 Erro 404 Not Found...
+    Tente novamente mais tarde!`);
+    window.location.reload()
+    }
+    
 }
 
 function sendStatus() {
@@ -23,7 +33,7 @@ function sendStatus() {
 }
 
 function onlineUser() {
-   sendStatus();
+   sendStatus;
    setInterval(sendStatus, 5000);
 
    searchMessage();
@@ -72,7 +82,7 @@ function displayMessage(response) {
 
             case 'status':
                 messageContainer.innerHTML += `
-                <div class='statusMessage scrollMessage'>
+                <div data-test="message" class='statusMessage scrollMessage'>
                     <p>
                         <span class='time'>(${message[i].time})</span>
                         <strong class='name'>${message[i].from}</strong>
@@ -145,4 +155,4 @@ document.addEventListener("keypress", function (e) {
     }
 });
 
-
+}

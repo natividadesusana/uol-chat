@@ -18,7 +18,7 @@
 
             <header>
                 <img src="./img/logo-uol.webp" alt="logo-uol">
-                <ion-icon name="people"></ion-icon>
+                <ion-icon data-test="open-participants" name="people"></ion-icon>
             </header>
 
             <main>
@@ -26,8 +26,8 @@
             </main>
 
             <footer>
-                <input type="text" class="text-input" placeholder="Escreva aqui..."/>
-                <ion-icon id="submit" name="paper-plane-outline" onclick="sendMessage()"></ion-icon>
+                <input data-test="input-message" type="text" class="text-input" placeholder="Escreva aqui..."/>
+                <ion-icon data-test="send-message" id="submit" name="paper-plane-outline" onclick="sendMessage()"></ion-icon>
             </footer>
 
         </div>
