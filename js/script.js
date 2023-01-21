@@ -89,7 +89,7 @@ function displayMessage(response) {
 
             case 'status':
                 messageContainer.innerHTML += `
-                <div data-test="message" class='statusMessage scrollMessage'>
+                <div data-test="message" class='statusMessage'>
                     <p>
                         <span class='time'>(${message[i].time})</span>
                         <strong class='name'>${message[i].from}</strong>
@@ -100,7 +100,7 @@ function displayMessage(response) {
 
             case 'message':
                 messageContainer.innerHTML += `
-                <div data-test="message" class='regularMessage scrollMessage'>
+                <div data-test="message" class='regularMessage'>
                     <p>
                         <span class='time'>(${message[i].time})</span>
                         <strong class='name'>${message[i].from}</strong>
@@ -110,20 +110,21 @@ function displayMessage(response) {
                     </p>
                 </div>`;
                 break;
-
-            case message[i].type === "private_message" && message[i].to === userName:
-                messageContainer.innerHTML += `
-                <div data-test="message" class='privateMessage scrollMessage'>
-                    <p>
-                        <span class='time'>(${message[i].time})</span>
-                        <strong class='name'>${message[i].from}</strong>
-                        <span class='text'>reservadamente para</span>
-                        <strong class='name'>${message[i].to}</strong>
-                        <span class='text'>${message[i].text}</span> 
-                    </p>
-                </div>`;
-                break;
         };
+        if (message[i].type === "private_message" && message[i].to === userName) {
+            messageContainer.innerHTML += `
+        <div data-test="message" class='privateMessage'>
+            <p>
+                <span class='time'>(${message[i].time})</span>
+                <strong class='name'>${message[i].from}</strong>
+                <span class='text'>reservadamente para</span>
+                <strong class='name'>${message[i].to}</strong>
+                <span class='text'>${message[i].text}</span> 
+            </p>
+        </div>`;
+            break;
+        }
+
     };
     messageContainer.lastChild.scrollIntoView();
 };
