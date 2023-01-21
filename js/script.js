@@ -110,21 +110,20 @@ function displayMessage(response) {
                     </p>
                 </div>`;
                 break;
-        };
-        if (message[i].type === "private_message" && message[i].to === userName) {
-            messageContainer.innerHTML += `
-        <div data-test="message" class='privateMessage'>
-            <p>
-                <span class='time'>(${message[i].time})</span>
-                <strong class='name'>${message[i].from}</strong>
-                <span class='text'>reservadamente para</span>
-                <strong class='name'>${message[i].to}</strong>
-                <span class='text'>${message[i].text}</span> 
-            </p>
-        </div>`;
-            break;
-        }
 
+            case 'private_message':
+                messageContainer.innerHTML += `
+                <div data-test="message" class='privateMessage'>
+                    <p>
+                        <span class='time'>(${message[i].time})</span>
+                        <strong class='name'>${message[i].from}</strong>
+                        <span class='text'>reservadamente para</span>
+                        <strong class='name'>${message[i].to}</strong>
+                        <span class='text'>${message[i].text}</span> 
+                    </p>
+                </div>`;
+                break;
+        };
     };
     messageContainer.lastChild.scrollIntoView();
 };
