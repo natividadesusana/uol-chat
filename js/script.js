@@ -100,7 +100,7 @@ function displayMessage(response) {
 
             case 'message':
                 messageContainer.innerHTML += `
-                <div class='regularMessage scrollMessage'>
+                <div data-test="message" class='regularMessage scrollMessage'>
                     <p>
                         <span class='time'>(${message[i].time})</span>
                         <strong class='name'>${message[i].from}</strong>
@@ -111,9 +111,9 @@ function displayMessage(response) {
                 </div>`;
                 break;
 
-            case 'private_message':
+            case message[i].type === "private_message" && message[i].to === userName:
                 messageContainer.innerHTML += `
-                <div class='privateMessage scrollMessage'>
+                <div data-test="message" class='privateMessage scrollMessage'>
                     <p>
                         <span class='time'>(${message[i].time})</span>
                         <strong class='name'>${message[i].from}</strong>
