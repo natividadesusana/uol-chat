@@ -5,13 +5,24 @@ let userName = {
     name: prompt(`🧡 Bem Vindo ao Chat UOL! 
 Digite seu nome:`)
 };
-
+debugger;
 userNameLogin();
 
 function userNameLogin() {
     const promisePOST = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants', userName);
     promisePOST.then(onlineUser);
     promisePOST.catch(errorUsername);
+};
+
+function onlineUser() {
+    sendStatus();
+    setInterval(sendStatus, 5000);
+
+    searchMessage();
+    setInterval(searchMessage, 3000);
+
+    loadParticipants();
+    setInterval(loadParticipants, 10000);
 };
 
 function errorUsername(error) {
@@ -42,23 +53,12 @@ function connectionError() {
     console.log('Erro na conexão!');
 };
 
-function onlineUser() {
-    sendStatus;
-    setInterval(sendStatus, 5000);
-
-    searchMessage();
-    setInterval(searchMessage, 3000);
-
-    loadParticipants();
-    setInterval(loadParticipants, 10000);
-};
-
 function searchMessage() {
     const promiseGET = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages');
     promiseGET.then(displayMessage);
     promiseGET.catch(() => window.location.reload());
 };
-searchMessage();
+// searchMessage();
 
 function loadParticipants() {
     const promiseGET = axios.get('https://mock-api.driven.com.br/api/v6/uol/participants');
@@ -112,7 +112,8 @@ function displayMessage(response) {
                 break;
 
             case 'private_message':
-                messageContainer.innerHTML += `
+                if (message[i].from === userName.name || message[i].to === userName.name || message[i].to === 'Todos') {
+                    messageContainer.innerHTML += `
                 <div data-test="message" class='privateMessage'>
                     <p>
                         <span class='time'>(${message[i].time})</span>
@@ -122,7 +123,9 @@ function displayMessage(response) {
                         <span class='text'>${message[i].text}</span> 
                     </p>
                 </div>`;
-                break;
+                    break;
+                }
+
         };
     };
     messageContainer.lastChild.scrollIntoView();
