@@ -30,7 +30,16 @@ Digite outro nome, pois este já está em uso!`);
 
 function sendStatus() {
     const promisePOST = axios.post('https://mock-api.driven.com.br/api/v6/uol/status', userName);
-    promisePOST.catch(() => window.location.reload())
+    promisePOST.then(activeConnection);
+    promisePOST.catch(connectionError);
+};
+
+function activeConnection() {
+    console.log('Usuário Conectado!');
+};
+
+function connectionError() {
+    console.log('Erro na conexão!');
 };
 
 function onlineUser() {
