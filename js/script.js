@@ -23,9 +23,8 @@ function login() {
         const removeHomeLayout = document.querySelector('.container-login-page');
         removeHomeLayout.classList.add('hidden');
         hideLoading.classList.remove('hidden');
-        // setInterval(() => { userNameLogin() }, 3000
-        // )
-        userNameLogin();
+        // setInterval(() => { userNameLogin() }, 3000);
+        userNameLogin()
     };
 }
 
@@ -190,4 +189,13 @@ document.addEventListener('keypress', function (e) {
     };
 });
 
+function exit() {
+    const hideMainContainer = document.querySelector('.container');
+    hideMainContainer.classList.add('hidden');
+    const removeHomeLayout = document.querySelector('.login-page');
+    removeHomeLayout.classList.toggle('hidden');
+    const alteranome = document.querySelector('.paragraph');
+    alteranome.innerHTML = 'Saindo...'
+    setInterval(() => { window.location.reload() }, 2000)
+}
 

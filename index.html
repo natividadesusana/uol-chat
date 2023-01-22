@@ -20,17 +20,20 @@
             <input data-test="input-name" text="text" class="login-input" placeholder="Digite seu nome" />
             <button data-test="send-name" id="send" type="button" onclick="login()">Entrar</button>
         </div>
-        <div class="loading">
+        <div class="loading hidden">
             <img src="./img/logo-uol.webp">
             <img src="./img/loading-gif-png-5.gif" />
-            <p>Entrando...</p>
+            <p class="paragraph">Entrando...</p>
         </div>
     </div>
 
     <div class="container">
         <header>
             <img src="./img/logo-uol.webp" alt="logo-uol">
-            <ion-icon data-test="open-participants" name="people"></ion-icon>
+            <div>
+                <ion-icon data-test="open-participants" name="people"></ion-icon>
+                <ion-icon class="exit" name="log-out-outline" onclick="exit()"></ion-icon>
+            </div>
         </header>
 
         <main>
