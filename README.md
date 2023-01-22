@@ -158,3 +158,15 @@ _____
      - [ ] Instead of a *prompt*, make a splash screen, following figma's *layout*.
 - Send with enter
      - [ ] Make sure that, if the user presses Enter in the message field, it is sent (that is, it should have the same behavior if the user clicks on the send button).
+
+______
+ 
+## Mobile Layout
+
+ <img width="449" alt="Captura de Tela 2023-01-22 às 18 03 46" src="https://user-images.githubusercontent.com/95102911/213940315-aedfbcd7-20d6-4b16-b2cc-e2cbd3a0207a.png">
+
+<img width="451" alt="Captura de Tela 2023-01-22 às 18 05 18" src="https://user-images.githubusercontent.com/95102911/213940365-ea83572c-d44c-4a91-be70-f88f980a15fb.png">
+
+<img width="450" alt="Captura de Tela 2023-01-22 às 18 04 33" src="https://user-images.githubusercontent.com/95102911/213940369-e5447f1c-16f3-49cb-a167-c1e61c4e3a2d.png">
+
+<img width="447" alt="Captura de Tela 2023-01-22 às 18 04 50" src="https://user-images.githubusercontent.com/95102911/213940374-3678c840-776b-4a9c-aa57-f9ebe40b124d.png">
