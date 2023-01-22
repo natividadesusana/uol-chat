@@ -212,9 +212,9 @@ button:hover {
   color: white;
 }
 
-/* .container {
-    display: none;
-} */
+.hidden {
+  display: none;
+}
 
 /* Layout mobile */
 
@@ -232,8 +232,8 @@ button:hover {
   }
 
   .container-login-page {
-   border: none;
-   box-shadow: none;
+    border: none;
+    box-shadow: none;
   }
 
   .container-login-page img {
@@ -244,7 +244,7 @@ button:hover {
 
   .container-login-page input {
     width: 261px;
-   height: 54px;
+    height: 54px;
   }
 
   .login-input {
@@ -256,4 +256,5 @@ button:hover {
     height: 45px;
     font-size: 18px;
   }
+  
 }

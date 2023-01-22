@@ -1,21 +1,22 @@
 
 let message = [];
 
-// let userName = {
-//     name: prompt(`🧡 Bem Vindo ao Chat UOL! 
-// Digite seu nome:`)
-// };
+let userName = {
+    name: ''
+};
 
-// userNameLogin();
+let loginPage = '';
 
-// let userName = {
-//     name: ''
-// }
+function login() {
+    loginPage = document.querySelector('.login-input').value;
 
-// function pageInitial() {
-//     const loginPage = document.querySelector('login-page');
-//     loginPage.classList.remove('.container');
-// }
+    if (loginPage === '') {
+        alert('😅 Digite seu nome!');
+    } else {
+        userName = { name: loginPage };
+        userNameLogin();
+    };
+};
 
 function userNameLogin() {
     const promisePOST = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants', userName);
@@ -24,6 +25,11 @@ function userNameLogin() {
 };
 
 function onlineUser() {
+    const removeLoginPage = document.querySelector('.login-page');
+    removeLoginPage.classList.add('hidden');
+    const addInitialLayout = document.querySelector('.container');
+    addInitialLayout.classList.remove('hidden');
+
     sendStatus();
     setInterval(sendStatus, 5000);
 
@@ -163,9 +169,9 @@ document.addEventListener("keypress", function (e) {
     if (e.key === 'Enter') {
         let btn = document.querySelector("#submit");
         btn.click();
-        document.querySelector('.text-input').value = '';
+        document.querySelector('.text-input .login-input').value = '';
         if (btn === '') {
-            return document.querySelector('.text-input').value = '';
+            return document.querySelector('.text-input .login-input').value = '';
         }
     }
 });

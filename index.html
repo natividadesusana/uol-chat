@@ -13,18 +13,16 @@
 </head>
 
 <body>
+
     <div class="login-page">
         <div class="container-login-page">
             <img src="./img/logo-uol.webp">
-            <input text="text" class="login-input" placeholder="Digite seu nome"/>
-            <button type="button">Entrar</button>
-        </div> 
-        
-       
+            <input data-test="input-name" text="text" class="login-input" placeholder="Digite seu nome" />
+            <button data-test="send-name" type="button" id="submit" onclick="login()">Entrar</button>
+        </div>
     </div>
 
-    <!-- <div class="container">
-
+    <div class="container hidden">
         <header>
             <img src="./img/logo-uol.webp" alt="logo-uol">
             <ion-icon data-test="open-participants" name="people"></ion-icon>
@@ -40,7 +38,7 @@
                 onclick="sendMessage()"></ion-icon>
         </footer>
 
-    </div> -->
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
