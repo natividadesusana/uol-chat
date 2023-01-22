@@ -1,3 +1,8 @@
+const hideLoading = document.querySelector('.loading');
+hideLoading.classList.add('hidden')
+const hideMainContainer = document.querySelector('.container');
+hideMainContainer.classList.add('hidden');
+
 
 let message = [];
 
@@ -8,15 +13,29 @@ let userName = {
 let loginPage = '';
 
 function login() {
+
     loginPage = document.querySelector('.login-input').value;
 
     if (loginPage === '') {
         alert('😅 Digite seu nome!');
     } else {
         userName = { name: loginPage };
+        const removeHomeLayout = document.querySelector('.container-login-page');
+        removeHomeLayout.classList.add('hidden');
+        hideLoading.classList.remove('hidden');
+        // setInterval(() => { userNameLogin() }, 3000
+        // )
         userNameLogin();
     };
-};
+}
+
+// document.addEventListener('keypress', function (x) {
+//     if (x.key === 'Enter') {
+//         let btnSend = document.querySelector('#send');
+//         btnSend.click();
+//     }
+// })
+
 
 function userNameLogin() {
     const promisePOST = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants', userName);
@@ -73,7 +92,6 @@ function searchMessage() {
     promiseGET.then(displayMessage);
     promiseGET.catch(() => window.location.reload());
 };
-// searchMessage();
 
 function loadParticipants() {
     const promiseGET = axios.get('https://mock-api.driven.com.br/api/v6/uol/participants');
@@ -165,15 +183,11 @@ function sendMessage() {
     promisePOST.catch(() => window.location.reload());
 };
 
-document.addEventListener("keypress", function (e) {
+document.addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
         let btn = document.querySelector("#submit");
         btn.click();
-        document.querySelector('.text-input .login-input').value = '';
-        if (btn === '') {
-            return document.querySelector('.text-input .login-input').value = '';
-        }
-    }
+    };
 });
 
 

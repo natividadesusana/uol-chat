@@ -18,11 +18,16 @@
         <div class="container-login-page">
             <img src="./img/logo-uol.webp">
             <input data-test="input-name" text="text" class="login-input" placeholder="Digite seu nome" />
-            <button data-test="send-name" type="button" id="submit" onclick="login()">Entrar</button>
+            <button data-test="send-name" id="send" type="button" onclick="login()">Entrar</button>
+        </div>
+        <div class="loading">
+            <img src="./img/logo-uol.webp">
+            <img src="./img/loading-gif-png-5.gif" />
+            <p>Entrando...</p>
         </div>
     </div>
 
-    <div class="container hidden">
+    <div class="container">
         <header>
             <img src="./img/logo-uol.webp" alt="logo-uol">
             <ion-icon data-test="open-participants" name="people"></ion-icon>

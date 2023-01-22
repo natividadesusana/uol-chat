@@ -146,7 +146,8 @@ footer ion-icon {
   align-items: center;
 }
 
-.container-login-page {
+.container-login-page,
+.loading {
   width: 30vw;
   height: 70vh;
   display: flex;
@@ -158,9 +159,14 @@ footer ion-icon {
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
-.container-login-page img {
+.container-login-page img,
+.loading img:nth-child(1) {
   width: 13vw;
   margin-bottom: 40px;
+}
+
+.loading img:nth-child(2) {
+  width: 8vw;
 }
 
 .container-login-page input {
@@ -170,6 +176,17 @@ footer ion-icon {
   border: 1px solid #d7d7d7;
   outline: none;
   cursor: pointer;
+}
+
+.loading p {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 1.3vw;
+  line-height: 25px;
+  color: #000000;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 .container-login-page input:hover {
@@ -231,20 +248,31 @@ button:hover {
     font-size: 26px;
   }
 
-  .container-login-page {
-    border: none;
-    box-shadow: none;
+  .container-login-page,
+  .loading {
+    width: 400px;
+    height: 600px;
   }
 
-  .container-login-page img {
+  .container-login-page img,
+  .loading img:nth-child(1) {
     margin-top: -180px;
     margin-bottom: 80px;
     width: 130px;
   }
 
+  .loading img:nth-child(2) {
+    width: 80px;
+    margin-top: -35px;
+  }
+
   .container-login-page input {
     width: 261px;
     height: 54px;
+  }
+
+  .loading p {
+    font-size: 18px;
   }
 
   .login-input {
@@ -256,5 +284,4 @@ button:hover {
     height: 45px;
     font-size: 18px;
   }
-  
 }
