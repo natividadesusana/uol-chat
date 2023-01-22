@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap");
 
 body {
-  background-color: #f1f1f1;
+  /* background-color: #f1f1f1; */
 }
 
 /* header session */
@@ -135,9 +135,90 @@ footer ion-icon {
   cursor: pointer;
 }
 
+/* session login page */
+
+.login-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-login-page {
+  width: 30vw;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #d7d7d7;
+  border-radius: 4px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.container-login-page img {
+  width: 13vw;
+  margin-bottom: 40px;
+}
+
+.container-login-page input {
+  width: 19vw;
+  height: 7vh;
+  border-radius: 4px;
+  border: 1px solid #d7d7d7;
+  outline: none;
+  cursor: pointer;
+}
+
+.container-login-page input:hover {
+  border: 1px solid rgb(195, 69, 34);
+}
+
+.login-input {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 1.3vw;
+  line-height: 25px;
+  color: #aeaeae;
+  text-align: center;
+}
+
+button {
+  width: 9vw;
+  height: 7vh;
+  border-radius: 9px;
+  background-color: #e7e7e7;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 1.3vw;
+  line-height: 25px;
+  color: #696969;
+  margin-top: 20px;
+  margin-bottom: 40px;
+
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: linear-gradient(
+    0deg,
+    rgba(195, 69, 34, 1) 0%,
+    rgba(253, 187, 45, 1) 100%
+  );
+  border: 1px solid rgb(149, 58, 25);
+  color: white;
+}
+
+/* .container {
+    display: none;
+} */
+
 /* Layout mobile */
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
   header img {
     height: 53px;
   }
@@ -148,5 +229,31 @@ footer ion-icon {
 
   footer ion-icon {
     font-size: 26px;
+  }
+
+  .container-login-page {
+   border: none;
+   box-shadow: none;
+  }
+
+  .container-login-page img {
+    margin-top: -180px;
+    margin-bottom: 80px;
+    width: 130px;
+  }
+
+  .container-login-page input {
+    width: 261px;
+   height: 54px;
+  }
+
+  .login-input {
+    font-size: 18px;
+  }
+
+  button {
+    width: 109px;
+    height: 45px;
+    font-size: 18px;
   }
 }

@@ -1,12 +1,21 @@
 
 let message = [];
 
-let userName = {
-    name: prompt(`🧡 Bem Vindo ao Chat UOL! 
-Digite seu nome:`)
-};
-debugger;
-userNameLogin();
+// let userName = {
+//     name: prompt(`🧡 Bem Vindo ao Chat UOL! 
+// Digite seu nome:`)
+// };
+
+// userNameLogin();
+
+// let userName = {
+//     name: ''
+// }
+
+// function pageInitial() {
+//     const loginPage = document.querySelector('login-page');
+//     loginPage.classList.remove('.container');
+// }
 
 function userNameLogin() {
     const promisePOST = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants', userName);
