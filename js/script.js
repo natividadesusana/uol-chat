@@ -26,15 +26,14 @@ function login() {
         // setInterval(() => { userNameLogin() }, 3000);
         userNameLogin()
     };
+
+    // document.addEventListener('keypress', function (x) {
+    //     if (x.key === 'Enter') {
+    //         let btnSend = document.querySelector('#send');
+    //         btnSend.click();
+    //     }
+    // })
 }
-
-// document.addEventListener('keypress', function (x) {
-//     if (x.key === 'Enter') {
-//         let btnSend = document.querySelector('#send');
-//         btnSend.click();
-//     }
-// })
-
 
 function userNameLogin() {
     const promisePOST = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants', userName);
@@ -196,6 +195,6 @@ function exit() {
     removeHomeLayout.classList.toggle('hidden');
     const alteranome = document.querySelector('.paragraph');
     alteranome.innerHTML = 'Saindo...'
-    setInterval(() => { window.location.reload() }, 2000)
+    setInterval(() => { window.location.reload() }, 3000)
 }
 
