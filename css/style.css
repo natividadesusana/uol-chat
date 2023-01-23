@@ -260,8 +260,8 @@ button:hover {
 
   .container-login-page,
   .loading {
-    width: 400px;
-    height: 600px;
+    border: none;
+    box-shadow: none;
   }
 
   .container-login-page img,

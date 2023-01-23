@@ -23,8 +23,8 @@ function login() {
         const removeHomeLayout = document.querySelector('.container-login-page');
         removeHomeLayout.classList.add('hidden');
         hideLoading.classList.remove('hidden');
-        // setInterval(() => { userNameLogin() }, 2000);
-        userNameLogin()
+      // setInterval(() => { userNameLogin() }, 2000);
+      userNameLogin()
     };
 
     // document.addEventListener('keypress', function (x) {
