@@ -23,7 +23,7 @@ function login() {
         const removeHomeLayout = document.querySelector('.container-login-page');
         removeHomeLayout.classList.add('hidden');
         hideLoading.classList.remove('hidden');
-        // setInterval(() => { userNameLogin() }, 3000);
+        // setInterval(() => { userNameLogin() }, 2000);
         userNameLogin()
     };
 
@@ -195,6 +195,6 @@ function exit() {
     removeHomeLayout.classList.toggle('hidden');
     const alteranome = document.querySelector('.paragraph');
     alteranome.innerHTML = 'Saindo...'
-    setInterval(() => { window.location.reload() }, 3000)
+    setInterval(() => { window.location.reload() }, 2000)
 }
 
