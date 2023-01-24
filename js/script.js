@@ -23,16 +23,8 @@ function login() {
         const removeHomeLayout = document.querySelector('.container-login-page');
         removeHomeLayout.classList.add('hidden');
         hideLoading.classList.remove('hidden');
-      // setInterval(() => { userNameLogin() }, 2000);
-      userNameLogin()
+        userNameLogin()
     };
-
-    // document.addEventListener('keypress', function (x) {
-    //     if (x.key === 'Enter') {
-    //         let btnSend = document.querySelector('#send');
-    //         btnSend.click();
-    //     }
-    // })
 }
 
 function userNameLogin() {
@@ -181,13 +173,6 @@ function sendMessage() {
     promisePOST.catch(() => window.location.reload());
 };
 
-document.addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
-        let btn = document.querySelector("#submit");
-        btn.click();
-    };
-});
-
 function exit() {
     const hideMainContainer = document.querySelector('.container');
     hideMainContainer.classList.add('hidden');
@@ -198,3 +183,20 @@ function exit() {
     setInterval(() => { window.location.reload() }, 2000)
 }
 
+// ------ click Enter -----
+
+const userNameInput = document.querySelector('.login-input');
+userNameInput.addEventListener('keyup', function (event) {
+    if (event.key === 'Enter') {
+        const sendMessageButton = document.querySelector('#send');
+        sendMessageButton.click();
+    }
+});
+
+const sendMessageInput = document.querySelector('.text-input');
+sendMessageInput.addEventListener('keyup', function (event) {
+    if (event.key === 'Enter') {
+        const sendMessageButton = document.querySelector('#submit');
+        sendMessageButton.click();
+    }
+});
