@@ -1,8 +1,7 @@
 # Project #05 - Bate-Papo UOL
 
-_____
  
-## *Desktop Layout*
+### *Desktop Layout*
  
  <img width="1440" alt="Captura de Tela 2023-01-22 às 17 53 26" src="https://user-images.githubusercontent.com/95102911/213939867-fe785c53-7785-457c-9b16-89a216145973.png">
  
@@ -162,7 +161,7 @@ _____
 
 ______
  
-## *Mobile Layout*
+### *Mobile Layout*
 
  <img width="449" alt="Captura de Tela 2023-01-22 às 18 03 46" src="https://user-images.githubusercontent.com/95102911/213940315-aedfbcd7-20d6-4b16-b2cc-e2cbd3a0207a.png">
 
