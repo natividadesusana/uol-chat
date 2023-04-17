@@ -1,6 +1,6 @@
-# Project Bate-Papo UOL
+# Project UOL Chat API
 
-The implemented project is a real-time chat, inspired by Bate-Papo UOL. It allows the user to enter a chat room, send and receive messages and view previous messages exchanged in the room. It is based on pure JavaScript technologies and does not use libraries or other languages that compile to JavaScript. In addition, it uses the Chat UOL API to maintain the user's connection and implement some functionalities.
+The implemented project is a real-time chat, inspired by UOL Chat. It allows the user to enter a chat room, send and receive messages and view previous messages exchanged in the room. It is based on pure JavaScript technologies and does not use libraries or other languages that compile to JavaScript. In addition, it uses the Chat UOL API to maintain the user's connection and implement some functionalities.
  
  <img width="1440" alt="Captura de Tela 2023-01-22 às 17 53 26" src="https://user-images.githubusercontent.com/95102911/213939867-fe785c53-7785-457c-9b16-89a216145973.png">
  
