@@ -1,4 +1,4 @@
-# Project UOL Chat API
+# Project UOL Chat 
 
 The implemented project is a real-time chat, inspired by UOL Chat. It allows the user to enter a chat room, send and receive messages and view previous messages exchanged in the room. It is based on pure JavaScript technologies and does not use libraries or other languages that compile to JavaScript. In addition, it uses the Chat UOL API to maintain the user's connection and implement some functionalities.
  
